@@ -26,6 +26,8 @@ router.route('/notes')
   .post(function(req, res){
     var note = new Note();
     note.title = req.body.title;
+    note.text = req.body.text;
+    note.img = req.body.img;
 
     note.save(function(err){
       if(err)
@@ -60,7 +62,9 @@ router.route('/notes/:note_id')
       if (err)
         res.send(err);
 
-      note.title = req.body.title;
+    note.title = req.body.title;
+    note.text = req.body.text;
+    note.img = req.body.img;
 
       note.save(function(err){
         if (err)
