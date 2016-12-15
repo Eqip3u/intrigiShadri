@@ -5,6 +5,7 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
         'webpack-hot-middleware/client',
+        'babel-polyfill',
         './src/index'
     ],
     output: {
@@ -20,7 +21,7 @@ module.exports = {
     module: {
         loaders: [
             {
-                loaders: ['babel-loader'],
+                loaders: ['react-hot', 'babel-loader'],
                 include: [
                     path.resolve(__dirname, "src"),
                 ],
