@@ -3,6 +3,10 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Note = require('./app/models/note');
+var webpack = require('webpack');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
+var config = require('./webpack.config');
 
 var app = express();
 
@@ -12,6 +16,15 @@ app.use(bodyParser.json());
 mongoose.connect('mongodb://Admin:LgwfAWz2@ds135798.mlab.com:35798/intrigi');
 
 var port = process.env.PORT || 8080;
+
+var compiler = webpack(config);
+app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}));
+app.use(webpackHotMiddleware(compiler));
+
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
+
 
 router.use(function(req, res, next) {
   console.log('idet xorowo epta');
