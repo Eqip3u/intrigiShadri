@@ -89,4 +89,4 @@ router.route('/notes/:note_id')
 app.use('/api', router);
 
 app.listen(port);
-console.log('magic' + port);
+console.log('сервачок прослушивается на - ' + port);
