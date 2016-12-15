@@ -14,12 +14,12 @@ mongoose.connect('mongodb://Admin:LgwfAWz2@ds135798.mlab.com:35798/intrigi');
 var port = process.env.PORT || 8080;
 
 router.use(function(req, res, next) {
-  console.log('xorowo!');
+  console.log('idet xorowo epta');
   next();
 });
 
 router.get('/', function(req, res) {
-  res.json({message: 'privet'});
+  res.json({message: 'api для Интриг Шадры'});
 });
 
 router.route('/notes')
@@ -44,7 +44,43 @@ router.route('/notes')
     });
   });
 
+router.route('/notes/:note_id')
 
+  .get(function(req, res){
+    Note.findById(req.params.note_id ,function(err, note){
+      if (err)
+        res.send(err);
+      
+      res.json(note);
+    });
+  })
+
+  .put(function(req, res){
+    Note.findById(req.params.note_id, function(err, note){
+      if (err)
+        res.send(err);
+
+      note.title = req.body.title;
+
+      note.save(function(err){
+        if (err)
+          res.send(err);
+
+        res.json({message: 'Заметка обновлена!'});
+      });
+    });
+  })
+
+  .delete(function(req, res){
+    Note.remove({
+      _id: req.params.note_id
+    }, function(err, note){
+        if(err)
+          res.send(err);
+        
+        res.json({message: 'Заметка удалена!'});
+      });
+  });
 
 app.use('/api', router);
 
