@@ -91,7 +91,7 @@ router.route('/notes/:note_id')
   .delete(function(req, res){
     Note.remove({
       _id: req.params.note_id
-    }, function(err, note){
+    }, function(err){
         if(err)
           res.send(err);
         
