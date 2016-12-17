@@ -5,10 +5,14 @@ const { SHOW_ALL } = VisibilityFilters;
 
 const initialState = [
     {
-        text: 'asdsaddsa'
+        title: 'Название первой заметки по дефолту',
+        text: 'Текст первой заметки',
+        image: 'Ссылка на картинку(1 заметка)'
     },
     {
-        text: 'vtoraya'
+        title: 'Название второй заметки по дефолту',
+        text: 'Текст второй заметки',
+        image: 'Ссылка на картинку(2 заметка)'
     }
 ]
 
@@ -29,7 +33,9 @@ function todos(state = initialState, action) {
 
     case ADD_TODO:
         return [...state, {
-            text: action.text
+            title: action.title,
+            text: action.text,
+            image: action.image
         }];
 
     default:

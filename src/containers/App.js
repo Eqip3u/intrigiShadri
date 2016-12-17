@@ -13,8 +13,8 @@ class App extends Component {
         return (
             <div>
                 <AddTodo
-                    onAddClick={text =>
-                        dispatch(addTodo(text))
+                    onAddClick={(title, text, image) =>
+                        dispatch(addTodo(title, text, image))
                     }
                 />
                 

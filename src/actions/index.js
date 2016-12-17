@@ -20,8 +20,8 @@ export const VisibilityFilters = {
  * action creators
  */
 
-export function addTodo(text) {
-  return { type: ADD_TODO, text };
+export function addTodo(title, text, image) {
+  return { type: ADD_TODO, title, text, image  };
 }
 
 export function completeTodo(index) {
