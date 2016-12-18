@@ -7,19 +7,21 @@ import TodoList from '../components/TodoList';
 import '../stylesheet/style.css'
 
 class App extends Component {
-    render() {
-        const { dispatch, visibleTodos } = this.props;
+    
+    handleAddTodo = (title, text, image) => {
+        const { dispatch } = this.props;
+        dispatch(addTodo(title, text, image))
+    }
 
+    render() {
         return (
             <div>
                 <AddTodo
-                    onAddClick={(title, text, image) =>
-                        dispatch(addTodo(title, text, image))
-                    }
+                    onAddClick={this.handleAddTodo}
                 />
                 
                 <TodoList
-                    todos={visibleTodos}
+                    todos={this.props.allTodos}
                 />
             </div>
         );
@@ -28,7 +30,7 @@ class App extends Component {
 
 function select(state) {
   return {
-    visibleTodos: state.todos
+    allTodos: state.todos
   };
 }
 
