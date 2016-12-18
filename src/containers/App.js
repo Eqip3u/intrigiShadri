@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { addTodo, VisibilityFilters } from '../actions';
+import { addTodo } from '../actions';
 import AddTodo from '../components/AddTodo';
 import TodoList from '../components/TodoList';
 
@@ -26,21 +26,10 @@ class App extends Component {
     }
 }
 
-function selectTodos(todos, filter) {
-  switch (filter) {
-    case VisibilityFilters.SHOW_ALL:
-        return todos;
-  }
-}
-
-// Какие именно props мы хотим получить из приходящего, как аргумент глобального состояния?
-// Обратите внимание: используйте https://github.com/faassen/reselect для более лучшей производительности.
 function select(state) {
   return {
-    visibleTodos: selectTodos(state.todos, state.visibilityFilter),
-    visibilityFilter: state.visibilityFilter
+    visibleTodos: state.todos
   };
 }
 
-// Оборачиваем компонент `App` для внедрения  в него функции `dispatch` и состояния
 export default connect(select)(App);

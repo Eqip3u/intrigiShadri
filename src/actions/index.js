@@ -3,8 +3,6 @@
  */
 
 export const ADD_TODO = 'ADD_TODO';
-export const COMPLETE_TODO = 'COMPLETE_TODO';
-export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
 /*
  * other constants
@@ -22,12 +20,4 @@ export const VisibilityFilters = {
 
 export function addTodo(title, text, image) {
   return { type: ADD_TODO, title, text, image  };
-}
-
-export function completeTodo(index) {
-  return { type: COMPLETE_TODO, index };
-}
-
-export function setVisibilityFilter(filter) {
-  return { type: SET_VISIBILITY_FILTER, filter };
 }
