@@ -5,8 +5,8 @@ export default class Todo extends Component {
     return (
         <li>
           <p>Тайтл заметки: {this.props.title}</p>
-          <p>Текст заметки: {this.props.text}</p>
-          <p>Картинка заметки: {this.props.image}</p>
+          <p>Текст : {this.props.text}</p>
+          <p>Картинка: {this.props.image}</p>
           <br />
         </li>
     );

@@ -2,13 +2,19 @@ import React, { Component} from 'react'
 import Todo from './Todo'
 
 export default class TodoList extends Component {
+
+    componentWillMount(){
+        this.props.fetchPosts();
+    }
+
     render() {
-        return (
+        const todoList = this.props.todos;
+
+        return (          
             <ul>
-                {
-                    this.props.todos.map((todo, index) => 
-                        <Todo {...todo} key = {index} />)   
-                }
+                {todoList.map((todo, index) => 
+                    <Todo {...todo} key = {index} />
+                    )}
             </ul>
         );
     }

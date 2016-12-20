@@ -1,13 +1,16 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from '../actions';
+import { addTodo, fetchPosts } from '../actions';
 import AddTodo from '../components/AddTodo';
-import TodoList from '../components/TodoList';
 
 import '../stylesheet/style.css'
 
 class App extends Component {
     
+    componentWillMount(){
+        this.props.fetchPosts();
+    }
+
     handleAddTodo = (title, text, image) => {
         const { dispatch } = this.props;
         dispatch(addTodo(title, text, image))
@@ -20,9 +23,16 @@ class App extends Component {
                     onAddClick={this.handleAddTodo}
                 />
                 
-                <TodoList
-                    todos={this.props.allTodos}
-                />
+                <ul>
+                    {this.props.allTodos.map((note) => 
+                        <li>
+                            <p>Тайтл заметки: {note.title}</p>
+                            <p>Текст : {note.text}</p>
+                            <p>Картинка: {note.image}</p>
+                            <br />
+                        </li>
+                    )}
+                </ul>
             </div>
         );
     }
@@ -30,8 +40,8 @@ class App extends Component {
 
 function select(state) {
   return {
-    allTodos: state.todos
+    allTodos: state.todos.all
   };
 }
 
-export default connect(select)(App);
+export default connect(select, { fetchPosts })(App);

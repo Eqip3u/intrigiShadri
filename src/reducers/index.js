@@ -1,23 +1,9 @@
 import { combineReducers } from 'redux'
-import { ADD_TODO, VisibilityFilters } from '../actions/index'
+import { FETCH_POSTS } from '../actions/index'
 
-const { SHOW_ALL } = VisibilityFilters;
-
-const initialState = [
-    {
-        title: 'Название первой заметки по дефолту',
-        text: 'Текст первой заметки',
-        image: 'Ссылка на картинку(1 заметка)'
-    },
-    {
-        title: 'Название второй заметки по дефолту',
-        text: 'Текст второй заметки',
-        image: 'Ссылка на картинку(2 заметка)'
-    }
-]
-
-function viewAllTodos(state = SHOW_ALL) {
-    return state
+const initialState = {
+    all: [],
+    post: null
 }
 
 
@@ -25,12 +11,8 @@ function todos(state = initialState, action) {
 
   switch (action.type) {
 
-    case ADD_TODO:
-        return [...state, {
-            title: action.title,
-            text: action.text,
-            image: action.image
-        }];
+    case FETCH_POSTS:
+        return { ...state, all: action.payload.data}
 
     default:
         return state;
@@ -38,7 +20,6 @@ function todos(state = initialState, action) {
 }
 
 const todoApp = combineReducers({
-    viewAllTodos,
     todos
 })
 

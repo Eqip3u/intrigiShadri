@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import thunk from 'redux-thunk'
+import promise from 'redux-promise'
 import todoApp from '../reducers/index'
 
 export default function configureStore(initialState) {
-    const store = createStore(todoApp, initialState, composeWithDevTools(applyMiddleware(thunk)))
+    const store = createStore(todoApp, initialState, composeWithDevTools(applyMiddleware(promise)))
 
     if (module.hot) {
         module.hot.accept('../reducers', () => {
