@@ -2,7 +2,7 @@ import axios from 'axios'
 
 //intrigishadri.herokuapp.com
 //localhost:8080/api
-const API_URL = 'intrigishadri.herokuapp.com';
+const API_URL = '//intrigishadri.herokuapp.com';
 
 
 /*
