@@ -1,36 +1,43 @@
-import React, {Component, PropTypes } from 'react';
+import React, {Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { createPost } from '../actions/index'
 
-export default class AddTodo extends Component {
+class AddTodo extends Component {
+
+  onSubmit(props) {
+    this.props.createPost(props);
+  }
+
   render() {
+    const { handleSubmit } = this.props;
     return (
       <div>
-        <input type='text' ref='inputText' placeholder='Введите текст заметки' />
-        <input type='text' ref='inputTitle' placeholder='Введите текст тайтла' />
-        <input type='text' ref='inputImage' placeholder='Ссылка на картинку' />
-        <button onClick={e => this.handleClick(e)}>
-          Add
-        </button>
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+          <h3>Добавить новый пост</h3>
+
+          <div className='form-group'>
+            <label>Название поста</label>
+            <Field name='title' component='input' type='text' />
+          </div>
+
+          <div className='form-group'>
+            <label>Текст картинки</label>
+            <Field name='text' component='input' type='text' />
+          </div>
+
+          <div className='form-group'>
+            <label>URL картинки</label>
+            <Field name='img' component='input' type='text' />
+          </div>
+
+          <button className='btn btn-primary' type='submit'>Отправить</button>
+        </form>
       </div>
     );
   }
 
-  handleClick() {
-    const textNote = this.refs.inputText;
-    const textTitle = this.refs.inputTitle;
-    const textImage = this.refs.inputImage;
-
-    const text = textNote.value.trim();
-    const title = textTitle.value.trim();
-    const image = textImage.value.trim();
-
-    this.props.onAddClick(title, text, image);
-
-    textNote.value = '';
-    textTitle.value = '';
-    textImage.value = '';
-  }
 }
 
-AddTodo.propTypes = {
-  onAddClick: PropTypes.func.isRequired
-};
+export default reduxForm({
+  form: 'PostsNewForm',
+}, null, { createPost } )( AddTodo );

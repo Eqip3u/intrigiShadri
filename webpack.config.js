@@ -24,15 +24,15 @@ module.exports = {
                 test: /\.js$/,
                 loaders: ['eslint'],
                 include: [
-                    path.resolve(__dirname, "src"),
+                    path.resolve(__dirname, 'src'),
                 ],
             }
         ],
         loaders: [
             {
-                loaders: ['react-hot', 'babel-loader'],
+                loaders: ['babel-loader'],
                 include: [
-                    path.resolve(__dirname, "src"),
+                    path.resolve(__dirname, 'src'),
                 ],
                 test: /\.js$/,
                 plugins: ['transform-runtime'],

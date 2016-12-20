@@ -1,15 +1,18 @@
 import axios from 'axios'
 
-//intrigishadri.herokuapp.com/api
-//localhost:8080/api
-const API_URL = '//intrigishadri.herokuapp.com/api';
+/*
+ * api
+ * //intrigishadri.herokuapp.com/api
+ * //localhost:8080/api
+ */
 
+const API_URL = '//intrigishadri.herokuapp.com/api';
 
 /*
  * action types
  */
 
-export const ADD_TODO = 'ADD_TODO';
+export const CREATE_POST = 'CREATE_POST';
 export const FETCH_POSTS = 'FETCH_POSTS';
 
 /*
@@ -17,6 +20,7 @@ export const FETCH_POSTS = 'FETCH_POSTS';
  */
 
 export function fetchPosts() {
+
   axios.get(`${API_URL}/notes`)
     .then(function(response) {
       console.log(response)
@@ -33,11 +37,12 @@ export function fetchPosts() {
   }
 }
 
-export function addTodo(title, text, image) {
-  return { 
-    type: ADD_TODO,
-    title,
-    text,
-    image
-  };
+export function createPost(props) {
+
+  const req = axios.post(`${API_URL}/notes`, props)
+
+  return {
+    type: CREATE_POST,
+    payload: req
+  }
 }

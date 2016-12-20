@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux'
-import { addTodo, fetchPosts } from '../actions';
+import { fetchPosts, createPost } from '../actions';
+import {connect} from 'react-redux'
 import AddTodo from '../components/AddTodo';
 import TodoList from '../components/TodoList'
 import '../stylesheet/style.css'
@@ -11,16 +11,11 @@ class App extends Component {
         this.props.fetchPosts();
     }
 
-    handleAddTodo = (title, text, image) => {
-        const { dispatch } = this.props;
-        dispatch(addTodo(title, text, image))
-    }
-
     render() {
         return (
             <div>
                 <AddTodo
-                    onAddClick={this.handleAddTodo}
+                    createPost={this.props.createPost}
                 />
                 
                 <TodoList 
@@ -38,4 +33,4 @@ function select(state) {
   };
 }
 
-export default connect(select, { fetchPosts })(App);
+export default connect(select, { fetchPosts, createPost })(App)

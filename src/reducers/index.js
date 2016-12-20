@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { reducer as formReducer } from 'redux-form'
 import { FETCH_POSTS } from '../actions/index'
 
 const initialState = {
@@ -20,7 +21,8 @@ function todos(state = initialState, action) {
 }
 
 const todoApp = combineReducers({
-    todos
+    todos,
+    form: formReducer
 })
 
 export default todoApp;
