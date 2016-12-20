@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { addTodo, fetchPosts } from '../actions';
 import AddTodo from '../components/AddTodo';
-import Todo from '../components/Todo'
+import TodoList from '../components/TodoList'
 import '../stylesheet/style.css'
 
 class App extends Component {
@@ -23,11 +23,10 @@ class App extends Component {
                     onAddClick={this.handleAddTodo}
                 />
                 
-                <ul>
-                    {this.props.allTodos.map((note, index) => 
-                        <Todo {...note} key = {index} />
-                    )}
-                </ul>
+                <TodoList 
+                    listTodo = {this.props.allTodos} 
+                />
+
             </div>
         );
     }

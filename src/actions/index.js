@@ -1,20 +1,16 @@
 import axios from 'axios'
 
-const API_URL = '//intrigishadri.herokuapp.com/api';
+//intrigishadri.herokuapp.com
+//localhost:8080/api
+const API_URL = 'intrigishadri.herokuapp.com';
+
+
 /*
  * action types
  */
 
 export const ADD_TODO = 'ADD_TODO';
 export const FETCH_POSTS = 'FETCH_POSTS';
-/*
- * other constants
- */
-
-export const VisibilityFilters = {
-  SHOW_ALL: 'SHOW_ALL',
-  
-};
 
 /*
  * action creators

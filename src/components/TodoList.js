@@ -3,16 +3,10 @@ import Todo from './Todo'
 
 export default class TodoList extends Component {
 
-    componentWillMount(){
-        this.props.fetchPosts();
-    }
-
-    render() {
-        const todoList = this.props.todos;
-
+    render() {        
         return (          
             <ul>
-                {todoList.map((todo, index) => 
+                {this.props.listTodo.map((todo, index) => 
                     <Todo {...todo} key = {index} />
                     )}
             </ul>
