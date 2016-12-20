@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { addTodo, fetchPosts } from '../actions';
 import AddTodo from '../components/AddTodo';
-
+import Todo from '../components/Todo'
 import '../stylesheet/style.css'
 
 class App extends Component {
@@ -24,13 +24,8 @@ class App extends Component {
                 />
                 
                 <ul>
-                    {this.props.allTodos.map((note) => 
-                        <li>
-                            <p>Тайтл заметки: {note.title}</p>
-                            <p>Текст : {note.text}</p>
-                            <p>Картинка: {note.image}</p>
-                            <br />
-                        </li>
+                    {this.props.allTodos.map((note, index) => 
+                        <Todo {...note} key = {index} />
                     )}
                 </ul>
             </div>

@@ -6,7 +6,7 @@ export default class Todo extends Component {
         <li>
           <p>Тайтл заметки: {this.props.title}</p>
           <p>Текст : {this.props.text}</p>
-          <p>Картинка: {this.props.image}</p>
+          <img src={this.props.img} />
           <br />
         </li>
     );
@@ -16,5 +16,5 @@ export default class Todo extends Component {
 Todo.propTypes = {
   text: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired
+  img: PropTypes.string.isRequired
 };

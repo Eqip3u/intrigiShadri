@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:8080/api';
+const API_URL = 'https://intrigishadri.herokuapp.com/api';
 /*
  * action types
  */
@@ -28,7 +28,7 @@ export function fetchPosts() {
     .catch(function(error) {
       console.log(error)
     })
-    
+
   const req = axios.get(`${API_URL}/notes`)
 
   return {
