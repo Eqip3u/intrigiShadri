@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'https://intrigishadri.herokuapp.com/api';
+const API_URL = '//intrigishadri.herokuapp.com/api';
 /*
  * action types
  */
