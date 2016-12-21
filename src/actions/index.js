@@ -14,6 +14,7 @@ const API_URL = '//intrigishadri.herokuapp.com/api';
 
 export const CREATE_POST = 'CREATE_POST';
 export const FETCH_POSTS = 'FETCH_POSTS';
+export const DELETE_POST = 'DELETE_POST';
 
 /*
  * action creators
@@ -43,6 +44,15 @@ export function createPost(props) {
 
   return {
     type: CREATE_POST,
+    payload: req
+  }
+}
+
+export function deletePost (id) {
+  const req = axios.delete(`${API_URL}/notes/${id}`)
+
+  return {
+    type: DELETE_POST,
     payload: req
   }
 }

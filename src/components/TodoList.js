@@ -7,7 +7,11 @@ export default class TodoList extends Component {
         return (          
             <ul>
                 {this.props.listTodo.map((todo, index) => 
-                    <Todo {...todo} key = {index} />
+                    <Todo 
+                        {...todo} 
+                        deletePost = {this.props.deletePost}  
+                        key = {index} 
+                    />
                     )}
             </ul>
         );
