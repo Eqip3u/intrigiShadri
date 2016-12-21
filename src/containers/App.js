@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
-import { fetchPosts, fetchPostsSuccess, fetchPostsFailure, createPost, deletePost } from '../actions';
+import { 
+    fetchPosts, fetchPostsSuccess, fetchPostsFailure,
+    createPost, createPostSuccess, createPostFailure,
+    deletePost
+} from '../actions';
 import {connect} from 'react-redux'
 import AddTodo from '../components/AddTodo';
 import TodoList from '../components/TodoList'
@@ -14,7 +18,7 @@ class App extends Component {
     render() {
         return (
             <div>
-            
+
                 <AddTodo
                     createPost={this.props.createPost}
                 />
@@ -31,7 +35,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    postsList: state.todos.postsList
+    postsList: state.todos.postsList,
+    newPost: state.todos.newPost
   };
 }
 
@@ -42,7 +47,14 @@ const mapDispatchToProps = (dispatch) => {
                 !response.error ? dispatch(fetchPostsSuccess(response.payload.data)) : dispatch(fetchPostsFailure(response.payload.data));
             })
         },
-        createPost,
+        createPost: (value) => {
+            dispatch(createPost(value)).then((result) => {
+                if(result.payload.response && result.payload.response.status !== 200) {
+                    dispatch(createPostFailure(result.payload.response.data))
+                }
+                dispatch(createPostSuccess(result.payload.data));
+            })
+        },
         deletePost
     }
 }

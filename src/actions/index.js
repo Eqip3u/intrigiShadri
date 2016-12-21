@@ -6,14 +6,15 @@ import axios from 'axios'
  * //localhost:8080/api
  */
 
-const API_URL = '//intrigishadri.herokuapp.com/api';
+const API_URL = '//localhost:8080/api';
 
 /*
  * action types
  */
 
 export const CREATE_POST = 'CREATE_POST';
-
+export const CREATE_POST_SUCCESS = 'CREATE_POST_SUCCESS';
+export const CREATE_POST_FAILURE = 'CREATE_POST_FAILURE';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
@@ -57,6 +58,19 @@ export function createPost(props) {
   return {
     type: CREATE_POST,
     payload: req
+  }
+}
+export function createPostSuccess(newPost) {
+  return {
+    type: CREATE_POST_SUCCESS,
+    payload: newPost
+  }
+}
+
+export function createPostFailure(error) {
+  return {
+    type: CREATE_POST_FAILURE,
+    payload: error
   }
 }
 
