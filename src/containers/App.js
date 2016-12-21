@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { fetchPosts, createPost, deletePost } from '../actions';
+import { fetchPosts, fetchPostsSuccess, fetchPostsFailure, createPost, deletePost } from '../actions';
 import {connect} from 'react-redux'
 import AddTodo from '../components/AddTodo';
 import TodoList from '../components/TodoList'
@@ -14,12 +14,13 @@ class App extends Component {
     render() {
         return (
             <div>
+            
                 <AddTodo
                     createPost={this.props.createPost}
                 />
                 
                 <TodoList 
-                    listTodo = {this.props.allTodos}
+                    postsList = {this.props.postsList}
                     deletePost = {this.props.deletePost}
                 />
 
@@ -28,10 +29,21 @@ class App extends Component {
     }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
-    allTodos: state.todos.all
+    postsList: state.todos.postsList
   };
 }
 
-export default connect(mapStateToProps, { fetchPosts, createPost, deletePost })(App)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchPosts: () => {
+            dispatch(fetchPosts()).then((response) => {
+                !response.error ? dispatch(fetchPostsSuccess(response.payload.data)) : dispatch(fetchPostsFailure(response.payload.data));
+            })
+        },
+        createPost,
+        deletePost
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App)

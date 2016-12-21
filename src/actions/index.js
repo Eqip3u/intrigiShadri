@@ -13,7 +13,13 @@ const API_URL = '//intrigishadri.herokuapp.com/api';
  */
 
 export const CREATE_POST = 'CREATE_POST';
+
+
 export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
+export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE';
+
+
 export const DELETE_POST = 'DELETE_POST';
 
 /*
@@ -22,19 +28,25 @@ export const DELETE_POST = 'DELETE_POST';
 
 export function fetchPosts() {
 
-  axios.get(`${API_URL}/notes`)
-    .then(function(response) {
-      console.log(response)
-    })
-    .catch(function(error) {
-      console.log(error)
-    })
-
   const req = axios.get(`${API_URL}/notes`)
 
   return {
     type: FETCH_POSTS,
     payload: req
+  }
+}
+
+export function fetchPostsSuccess(posts) {
+  return{
+    type: FETCH_POSTS_SUCCESS,
+    payload: posts
+  }
+}
+
+export function fetchPostsFailure(error) {
+  return{
+    type: FETCH_POSTS_FAILURE,
+    payload: error
   }
 }
 
