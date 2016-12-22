@@ -2,7 +2,8 @@ import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 import { 
     FETCH_POSTS, FETCH_POSTS_SUCCESS, FETCH_POSTS_FAILURE,
-    CREATE_POST, CREATE_POST_SUCCESS, CREATE_POST_FAILURE
+    CREATE_POST, CREATE_POST_SUCCESS, CREATE_POST_FAILURE,
+    DELETE_POST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE
  } from '../actions/index'
 
 const initialState = {
@@ -35,6 +36,13 @@ function todos(state = initialState, action) {
         error = action.payload || {message: action.payload.message}
         return { ...state, newPost: {post: null, error: null, loading: false}}
     
+    case DELETE_POST:
+        return {...state, deletedPost: {...state.deletedPost, loading: true}}
+    case DELETE_POST_SUCCESS:
+        return {...state, deletedPost: {post: action.payload, error: null, loading: false}}
+    case DELETE_POST_FAILURE:
+        error = action.payload || {message: action.payload.message}
+        return {...state, deletedPost: {post: null, error: error, loading: false}}
 
     default:
         return state;

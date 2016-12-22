@@ -6,7 +6,7 @@ import axios from 'axios'
  * //localhost:8080/api
  */
 
-const API_URL = '//intrigishadri.herokuapp.com/api';
+const API_URL = '//localhost:8080/api';
 
 /*
  * action types
@@ -20,8 +20,9 @@ export const FETCH_POSTS = 'FETCH_POSTS';
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
 export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE';
 
-
 export const DELETE_POST = 'DELETE_POST';
+export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
+export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
 
 /*
  * action creators
@@ -80,5 +81,19 @@ export function deletePost (id) {
   return {
     type: DELETE_POST,
     payload: req
+  }
+}
+
+export function deletePostSuccess(deletedPost) {
+  return {
+    type: DELETE_POST_SUCCESS,
+    payload: deletedPost
+  }
+}
+
+export function deletePostFailure(error) {
+  return {
+    type: DELETE_POST_FAILURE,
+    payload: error
   }
 }

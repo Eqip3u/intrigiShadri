@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { 
     fetchPosts, fetchPostsSuccess, fetchPostsFailure,
     createPost, createPostSuccess, createPostFailure,
-    deletePost
+    deletePost, deletePostSuccess, deletePostFailure
 } from '../actions';
 import {connect} from 'react-redux'
 import AddTodo from '../components/AddTodo';
@@ -36,7 +36,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     postsList: state.todos.postsList,
-    newPost: state.todos.newPost
+    newPost: state.todos.newPost,
+    deletedPost: state.todos.deletedPost
   };
 }
 
@@ -55,7 +56,11 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(createPostSuccess(result.payload.data));
             })
         },
-        deletePost
+        deletePost: (id) => {
+            dispatch(deletePost(id)).then((response) => {
+                !response.error ? dispatch(deletePostSuccess(response.payload)) : dispatch(deletePostFailure(response.payload));
+            })
+        }
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App)
