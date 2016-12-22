@@ -6,6 +6,7 @@ class AddTodo extends Component {
 
   onSubmit(props) {
     this.props.createPost(props);
+    this.props.fetchPosts();
   }
 
   render() {

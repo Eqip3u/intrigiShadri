@@ -27,7 +27,7 @@ app.get('/', function(req, res){
 
 
 router.use(function(req, res, next) {
-  console.log('idet xorowo epta');
+  console.log('Обращение к серверу');
   next();
 });
 
@@ -101,5 +101,10 @@ router.route('/notes/:note_id')
 
 app.use('/api', router);
 
-app.listen(port);
-console.log('сервачок прослушивается на - ' + port);
+app.listen(port, function onAppListening(err) {
+  if(err){
+    console.log(err);
+  } else {
+    console.log(`==> Listening at port: ${port}`)
+  }
+});

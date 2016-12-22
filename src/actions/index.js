@@ -6,7 +6,7 @@ import axios from 'axios'
  * //localhost:8080/api
  */
 
-const API_URL = '//intrigishadri.herokuapp.com/api';
+const API_URL = '//localhost:8080/api';
 
 /*
  * action types

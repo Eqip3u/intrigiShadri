@@ -3,7 +3,8 @@ import React, { Component, PropTypes } from 'react';
 export default class Todo extends Component {
 
   onDeleteClick() {
-    this.props.deletePost(this.props._id)
+    this.props.deletePost(this.props._id);
+    this.props.fetchPosts();
   }
 
   render() {

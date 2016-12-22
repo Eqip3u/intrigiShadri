@@ -10,10 +10,6 @@ import TodoList from '../components/TodoList'
 import '../stylesheet/style.css'
 
 class App extends Component {
-    
-    componentWillMount(){
-        this.props.fetchPosts();
-    }
 
     render() {
         return (
@@ -21,11 +17,13 @@ class App extends Component {
 
                 <AddTodo
                     createPost={this.props.createPost}
+                    fetchPosts = {this.props.fetchPosts}
                 />
                 
                 <TodoList 
                     postsList = {this.props.postsList}
                     deletePost = {this.props.deletePost}
+                    fetchPosts = {this.props.fetchPosts}
                 />
 
             </div>
