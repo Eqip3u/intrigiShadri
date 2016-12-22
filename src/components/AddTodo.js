@@ -1,6 +1,46 @@
 import React, {Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { createPost } from '../actions/index'
+
+const validate = values => {
+  const errors = {}
+
+  if(!values.title) {
+    errors.title = 'Заполни тайтл пидор'
+  }
+
+  if(!values.text) {
+    errors.text = 'Напиши текст пидор'
+  }
+
+  if(!values.img) {
+    errors.img = 'Вставь картинку пидор'
+  }
+
+  return errors
+}
+
+const warn = values => {
+  const warnings = {}
+
+  if(values.title === '') {
+    warnings.title = 'zapolni epta...'
+  }
+  
+  return warnings
+}
+
+const renderField = ({ input, label, type, meta: {touched, error, invalid, warning}}) => (
+  <div className={`form-group ${touched && invalid ? 'has-danger' : ''}`}>
+    <label>{label}</label>
+
+    <input {...input} className={`form-control ${touched && invalid ? 'form-control-danger' : ''}`} placeholder={label} type={type}/>
+
+    <div className='form-control-feedback'>
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    </div>
+
+  </div>
+)
 
 class AddTodo extends Component {
 
@@ -10,28 +50,22 @@ class AddTodo extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, submitting } = this.props;
+  
     return (
-      <div>
+      <div className='formSubmit'>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <h3>Добавить новый пост</h3>
 
-          <div className='form-group'>
-            <label>Название поста</label>
-            <Field name='title' component='input' type='text' />
-          </div>
+          <h1>Add post</h1>
 
-          <div className='form-group'>
-            <label>Текст картинки</label>
-            <Field name='text' component='input' type='text' />
-          </div>
+          <Field name='title' type='text' component={renderField} label='Title' />
 
-          <div className='form-group'>
-            <label>URL картинки</label>
-            <Field name='img' component='input' type='text' />
-          </div>
+          <Field name='text' type='text' component={renderField} label='Text' />
 
-          <button className='btn btn-primary' type='submit'>Отправить</button>
+          <Field name='img' type='text' component={renderField} label='Img' />
+
+          <button className='btn btn-primary' type='submit' disabled={submitting}>Send</button>
+
         </form>
       </div>
     );
@@ -41,4 +75,6 @@ class AddTodo extends Component {
 
 export default reduxForm({
   form: 'PostsNewForm',
-}, null, { createPost } )( AddTodo );
+  validate,
+  warn
+})( AddTodo );
