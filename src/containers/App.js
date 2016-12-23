@@ -18,6 +18,7 @@ class App extends Component {
                 <AddTodo
                     createPost={this.props.createPost}
                     fetchPosts = {this.props.fetchPosts}
+                    newPost = {this.props.newPost}
                 />
                 
                 <TodoList 

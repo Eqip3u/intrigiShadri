@@ -31,9 +31,9 @@ const warn = values => {
 
 const renderField = ({ input, label, type, meta: {touched, error, invalid, warning}}) => (
   <div className={`form-group ${touched && invalid ? 'has-danger' : ''}`}>
-    <label>{label}</label>
+    <label className='form-control-label'>{label}</label>
 
-    <input {...input} className={`form-control ${touched && invalid ? 'form-control-danger' : ''}`} placeholder={label} type={type}/>
+    <input {...input} className={`form-control ${touched && invalid ? 'form-control-danger' : ''}`} type={type}/>
 
     <div className='form-control-feedback'>
       {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
@@ -49,11 +49,25 @@ class AddTodo extends Component {
     this.props.fetchPosts();
   }
 
+  renderSuccess(newPost) {
+    if(newPost) {
+      return (
+        <div className='alert alert-success alert-dismissible fade in' role='alert'>
+          <button type='button' className='close' data-dismiss='alert' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+          <strong>Well done!</strong> create post.
+        </div>
+      )
+    }
+  }
+
   render() {
-    const { handleSubmit, submitting } = this.props;
+    const { handleSubmit, pristine, submitting, newPost } = this.props;
   
     return (
       <div className='formSubmit'>
+        {this.renderSuccess(newPost)}
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
           <h1>Add post</h1>
@@ -64,7 +78,7 @@ class AddTodo extends Component {
 
           <Field name='img' type='text' component={renderField} label='Img' />
 
-          <button className='btn btn-primary' type='submit' disabled={submitting}>Send</button>
+          <button className='btn btn-primary' type='submit' disabled={submitting || pristine}>Send</button>
 
         </form>
       </div>
