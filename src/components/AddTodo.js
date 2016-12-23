@@ -73,7 +73,7 @@ class AddTodo extends Component {
               <h1>Напиши сплетенку!</h1>
             </div>
             <div className='col-xs-2'>
-              <img src='https://psv4.vk.me/c812732/u230868199/docs/c9aa4c3d044b/pisos.png?extra=cKAmQAf2iCpeIKEPtUtQI52Z0IPKS5gMwkBSNF6DfWhBxh_m3TiOfcXK2euhvofoFtve32ad7dtcM_jG4uGhNFD5zFZYS0Iz1QFdk4Axv5I9MyZYSMhLvgt6ig' height='100' width='120' alt='писос'/>
+              <img src='https://3.downloader.disk.yandex.ru/preview/d8e98ade775a7da8370840510b519bffe34c3c256c9372af7e5fb092a69f1ad6/inf/Z_OUbNZ3gkF9ZAt9SZ5Csn_YyVsEpuXe3IurvrY5OjH9dfHcfY4sE1_WdnCl9Iyt4aC1ieQtSUq-oPhR2WBddA%3D%3D?uid=267985867&filename=pisos.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&tknv=v2&size=1127x700' height='100' width='120' alt='писос'/>
             </div>
           </div>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
