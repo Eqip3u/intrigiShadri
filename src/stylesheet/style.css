@@ -16,8 +16,8 @@ border: 2px solid white;
     
 }
 .grey{
-   background-color: rgba(128, 128, 128, 0.07); 
-    border: 2px solid rgba(0, 0, 0, 0.08);
+    background-color: rgba(128, 128, 128, 0.07); 
+    border: 10px solid white;
 }
 .vcenter {
     display: inline-block;
@@ -31,11 +31,12 @@ border: 2px solid white;
 }
 .row{
      border: 2px solid rgba(0, 0, 0, 0.08);
-     margin-down: 20px;
 }
 .down{
    padding:2px;
-}]
-.btn{
-    
+}
+
+.col-xs-10 > h1 {
+    margin-top: 10px;
+    margin-left: 16px;
 }

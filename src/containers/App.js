@@ -6,7 +6,7 @@ import {
 } from '../actions';
 import {connect} from 'react-redux'
 import AddTodo from '../components/AddTodo';
-import TodoList from '../components/TodoList'
+import TodoList from '../components/TodoList';
 import '../stylesheet/style.css'
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
                     deletePost = {this.props.deletePost}
                     fetchPosts = {this.props.fetchPosts}
                 />
-
+                
             </div>
         );
     }

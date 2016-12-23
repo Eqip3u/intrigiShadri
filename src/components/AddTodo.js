@@ -61,36 +61,33 @@ class AddTodo extends Component {
   
     return (
       <div className='formSubmit'>
-      <SweetAlert
-                  show={this.state.show}
-                  type='success'
-                  title='Отлично!'
-                  text='Ваша сплетня опубликована!'
-                  onConfirm={() => this.setState({ show: false })}
-                />  
-            <img className='img-fluid' src='http://rgho.st/8nfjV4PYS/image.png' />       
+      <SweetAlert show={this.state.show} type='success' title='Отлично!' text='Ваша сплетня опубликована!' onConfirm={() => this.setState({ show: false })}/>
 
-            <div className='col-xs-10'>
-              <h1>Напиши сплетенку!</h1>
+            <img className='img-fluid' src='http://meson.ad-l.ink/7NmbpX5p6/image.png' />  
+            <p></p>     
 
-         </div> 
+        <div className='col-xs-10'>
+          <h1>Напиши сплетенку!</h1>
+        </div> 
+
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <div className='row grey '>
+
             <div className='col-xs-7 col-md-7 col-lg-9 vcenter rounded form' > 
               <Field name='title' type='text' component={renderField} label='Имя'/>
-
               <Field name='img' type='text' component={renderField} label='Картинка' />
               <p> Отправь URL ссылку на картинку или гифку! <a href='https://support.google.com/websearch/answer/118238?hl=ru'>
                   HOW TO </a></p> 
-
               <Field name='text'  type='text' component={renderField} label='Текст' />
             </div>
+
+
             <div className='col-xs-12 col-md-12 col-lg-12 form'> 
-
-                <button onClick={() => this.setState({ show: true })} className='btn btn-outline-primary btn-lg' type='submit' disabled={submitting || pristine}>Отправить!</button>
+                <button onClick={() => this.setState({ show: true })} className='btn btn-outline-primary' type='submit' disabled={submitting || pristine}>Отправить!</button>
+                <p></p>
             </div>
-            </div>
 
+          </div>
         </form>
       </div>
     );

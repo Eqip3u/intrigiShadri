@@ -9,17 +9,16 @@ export default class Todo extends Component {
   
   render() {
     return (
-          
-          <div className='col-xs-4 span3 grey ' >
+
+          <div className='col-xs-4 span3 grey  ' >
              <p className='center'>{this.props.title}</p>
              <div>
                 <p className='text-xs-left'>{this.props.text}</p>
-                <img src={this.props.img} className='img-fluid'/>
+                <img src={this.props.img} className='img-fluid image-element-class'/>
              </div>
               <button className='btn btn-outline-danger pull-xs-right ' onClick={this.onDeleteClick.bind(this)}>
                 Удалить
               </button>
-              <br />
           </div>
 
     );
