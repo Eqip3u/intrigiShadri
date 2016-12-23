@@ -13,7 +13,7 @@ export default class Todo extends Component {
           <p>Тайтл заметки: {this.props.title}</p>
           <p>Текст : {this.props.text}</p>
           <img src={this.props.img} />
-          <button className='btn btn-danger pull-xs-right' onClick={this.onDeleteClick.bind(this)}>
+          <button className='btn btn-outline-danger pull-xs-right' onClick={this.onDeleteClick.bind(this)}>
             Удалить
           </button>
           <br />

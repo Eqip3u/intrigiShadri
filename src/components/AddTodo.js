@@ -78,7 +78,7 @@ class AddTodo extends Component {
 
           <Field name='img' type='text' component={renderField} label='Img' />
 
-          <button className='btn btn-primary' type='submit' disabled={submitting || pristine}>Send</button>
+          <button className='btn btn-outline-primary' type='submit' disabled={submitting || pristine}>Send</button>
 
         </form>
       </div>

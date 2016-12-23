@@ -18,17 +18,19 @@ export default class TodoList extends Component {
             return <div>Error: {error.message}</div>
         }
 
-        return (          
-            <ul>
-                {posts.map((todo, index) => 
-                    <Todo 
-                        {...todo} 
-                        deletePost = {this.props.deletePost}  
-                        key = {index}
-                        fetchPosts = {this.props.fetchPosts}
-                    />
-                    )}
-            </ul>
+        return (
+            <div>   
+                <ul>
+                    {posts.map((todo, index) => 
+                        <Todo 
+                            {...todo} 
+                            deletePost = {this.props.deletePost}  
+                            key = {index}
+                            fetchPosts = {this.props.fetchPosts}
+                        />
+                        )}
+                </ul>
+            </div>
         );
     }
 }
