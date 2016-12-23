@@ -10,7 +10,7 @@ export default class Todo extends Component {
   render() {
     return (
           
-          <div className='col-xs-3 span3' >
+          <div className='col-xs-4 span3 grey ' >
              <p className='center'>{this.props.title}</p>
              <div>
                 <p className='text-xs-left'>{this.props.text}</p>

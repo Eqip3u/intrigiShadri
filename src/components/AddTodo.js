@@ -11,7 +11,7 @@ const validate = values => {
   }
 
   if(!values.text) {
-    errors.text = 'Напиши хоть что ни будь!'
+    errors.text = 'Напиши хоть что-нибудь!'
   }
 
 
@@ -67,18 +67,16 @@ class AddTodo extends Component {
                   title='Отлично!'
                   text='Ваша сплетня опубликована!'
                   onConfirm={() => this.setState({ show: false })}
-                />
-       <div className='row'>
+                />  
+            <img className='img-fluid' src='http://rgho.st/8nfjV4PYS/image.png' />       
+
             <div className='col-xs-10'>
               <h1>Напиши сплетенку!</h1>
-            </div>
-            <div className='col-xs-2'>
-              <img src='http://rgho.st/8QqpP7YKR/image.png' height='100' width='120' alt='писос'/>
-            </div>
-          </div>
+
+         </div> 
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <div className='row'>
-            <div className='col-xs-8 col-md-8 col-lg-10 vcenter grey'> 
+          <div className='row grey '>
+            <div className='col-xs-7 col-md-7 col-lg-9 vcenter rounded form' > 
               <Field name='title' type='text' component={renderField} label='Имя'/>
 
               <Field name='img' type='text' component={renderField} label='Картинка' />
@@ -87,13 +85,12 @@ class AddTodo extends Component {
 
               <Field name='text'  type='text' component={renderField} label='Текст' />
             </div>
-            <div className='col-xs-4 col-md-4 col-lg-2 vcenter '> 
-              <div className='top'>
+            <div className='col-xs-12 col-md-12 col-lg-12 form'> 
+
                 <button onClick={() => this.setState({ show: true })} className='btn btn-outline-primary btn-lg' type='submit' disabled={submitting || pristine}>Отправить!</button>
-                
-              </div>
             </div>
-          </div>
+            </div>
+
         </form>
       </div>
     );
