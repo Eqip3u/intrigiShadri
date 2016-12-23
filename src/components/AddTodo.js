@@ -69,8 +69,14 @@ class AddTodo extends Component {
       <div className='formSubmit'>
         {this.renderSuccess(newPost)}
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-
-          <h1>Add post</h1>
+          <div className='row'>
+            <div className='col-xs-11'>
+              <h1>Add post</h1>
+            </div>
+            <div className='col-xs-1'>
+              <img src='https://avatanplus.com/files/resources/mid/574c463b4e60a15501f257b9.png' height='80' width='80' alt='писос'/>
+            </div>
+          </div>
 
           <Field name='title' type='text' component={renderField} label='Title' />
 
