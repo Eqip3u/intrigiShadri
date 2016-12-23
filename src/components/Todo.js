@@ -6,18 +6,22 @@ export default class Todo extends Component {
     this.props.deletePost(this.props._id);
     this.props.fetchPosts();
   }
-
+  
   render() {
     return (
-        <li>
-          <p>Тайтл заметки: {this.props.title}</p>
-          <p>Текст : {this.props.text}</p>
-          <img src={this.props.img} />
-          <button className='btn btn-outline-danger pull-xs-right' onClick={this.onDeleteClick.bind(this)}>
-            Удалить
-          </button>
-          <br />
-        </li>
+          
+          <div className='col-xs-3 span3' >
+             <p className='center'>{this.props.title}</p>
+             <div>
+                <p className='text-xs-left'>{this.props.text}</p>
+                <img src={this.props.img} className='img-fluid'/>
+             </div>
+              <button className='btn btn-outline-danger pull-xs-right ' onClick={this.onDeleteClick.bind(this)}>
+                Удалить
+              </button>
+              <br />
+          </div>
+
     );
   }
 }

@@ -2,3 +2,24 @@
     padding-top: 3rem;
     border: 4px black;
 }
+.col-xs-3{
+background-color: rgba(128, 128, 128, 0.07);
+border: 2px solid white;
+}
+.center{
+   margin-top: 5px;
+   text-align: center;
+   font-size: 18px;   
+}
+.text-space{
+    background-color: rgba(128, 128, 128, 0.26);
+    
+}
+.grey{
+   background-color: rgba(128, 128, 128, 0.07); 
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
