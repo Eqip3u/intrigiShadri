@@ -16,9 +16,6 @@ export default class Todo extends Component {
                 <p className='text-xs-left'>{this.props.text}</p>
                 <img src={this.props.img} className='img-fluid image-element-class'/>
              </div>
-              <button className='btn btn-outline-danger pull-xs-right ' onClick={this.onDeleteClick.bind(this)}>
-                Удалить
-              </button>
           </div>
 
     );

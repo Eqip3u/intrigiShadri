@@ -76,7 +76,7 @@ class AddTodo extends Component {
             <div className='col-xs-7 col-md-7 col-lg-9 vcenter rounded form' > 
               <Field name='title' type='text' component={renderField} label='Имя'/>
               <Field name='img' type='text' component={renderField} label='Картинка' />
-              <p> Отправь URL ссылку на картинку или гифку! <a href='https://support.google.com/websearch/answer/118238?hl=ru'>
+              <p className="mini"> Отправь URL ссылку на картинку или гифку! <a href='https://support.google.com/websearch/answer/118238?hl=ru'>
                   HOW TO </a></p> 
               <Field name='text'  type='text' component={renderField} label='Текст' />
             </div>
